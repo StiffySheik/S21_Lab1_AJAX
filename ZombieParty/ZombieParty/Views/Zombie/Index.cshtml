@@ -33,3 +33,31 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+
+        $(".favorite").on("click" , function () {
+
+            let baliseA = $(this);      // Allez chercher l'élément <a> qui a été cliqué.
+            //console.log(baliseA);     // Validation qu'on obtient bien l'élément voulu. (Voir console navigateur)
+
+            let idZombie = baliseA.attr("id");   // Obtenir l'id en utilisant attr sur l'élément <a> cliqué
+            //console.log(idZombie);    // Validation
+            
+            $.post("/Zombie/Favorite", { "id" : idZombie }, // Construction de la requête post car on modifie les données 
+
+                function (data) {
+                    //console.log(data);    // Validation
+                    if (data){
+                        baliseA.removeClass("text-dark");
+                        baliseA.addClass("text-primary");
+                    } else {
+                        baliseA.removeClass("text-primary");
+                        baliseA.addClass("text-dark");
+                    }
+             });
+        });
+
+    </script>
+}
