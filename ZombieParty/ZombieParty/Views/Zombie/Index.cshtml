@@ -21,9 +21,11 @@
 
     <div id="showmodal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document" style="background-color:white">
+
             <div class="modal-header">
                 <h4 class="modal-title" id="myModalLabel">Zombie Details</h4>
             </div>
+
             <div class="container mt-3">
                 <div id="content"></div>
             </div>
@@ -58,6 +60,22 @@
                     }
              });
         });
+
+
+        $(".detail-btn").on("click", function(){
+
+            let BaliseButton = $(this)
+            let idZombie = BaliseButton.attr("id")
+
+            $.get("/Zombie/Details",{"id": idZombie},
+
+            function(data) {
+             $("#showmodal #content").html(data); // Insère data dans le div avec l’id content
+             $("#showmodal").modal("show")        // Permet d’afficher le modal
+            }
+            
+        })
+
 
     </script>
 }

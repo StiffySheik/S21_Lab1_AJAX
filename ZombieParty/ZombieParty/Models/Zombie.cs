@@ -6,7 +6,9 @@ using System.ComponentModel;
 namespace ZombieParty.Models
 {
     public class Zombie
+        
     {
+
         public int Id { get; set; }
         public bool IsFavorite { get; set; }
 
